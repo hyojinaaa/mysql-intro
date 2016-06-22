@@ -1,14 +1,13 @@
 <?php
 
-include "database.php";
-$movies = getMovieList();
-$singlemovie = getSingleMovie(); 
+include "model/Database.php";
+include "model/Movie.php";
 
-// if(isset($_GET['page'])) {
-// 	$page = $_GET['page'];
-// } else {
-// 	$page ="home";
-// }
+
+// instantiate an object for Movie
+$movie = new Movie;
+$movies = $movie->SelectAll();
+$singlemovie = $movie->find();
 
 // ternary operator to get page information
 $page = isset($_GET['page']) ? $_GET['page'] : 'home';
